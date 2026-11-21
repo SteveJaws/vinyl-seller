@@ -13,7 +13,11 @@ public class VinylSpawnAreaBehaviour : MonoBehaviour
 
     [SerializeField] float timeBetweenVinylSpawns = 3f;
 
+    [SerializeField] private int maxVinylsInSpawn = 5;
+
     private List<GameObject> vinylList = new List<GameObject>();
+
+    private List<GameObject> spawnedVinylList = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +26,7 @@ public class VinylSpawnAreaBehaviour : MonoBehaviour
         spawnAreaWidth = spriteRenderer.bounds.size.x;
         spawnAreaHeight = spriteRenderer.bounds.size.y;
 
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < maxVinylsInSpawn; i++)
         {
             vinylList.Add(vinyl);
         }
@@ -43,14 +47,6 @@ public class VinylSpawnAreaBehaviour : MonoBehaviour
         for(int i = 0; i < vinylListCount; i++)
         {   
             float spawnPointX = 0;
-            // if(i == 0)
-            // {
-            //     spawnPointX = spawnAreaWidth / vinylListCount;
-            // }
-            // else
-            // {
-            //     spawnPointX = spawnAreaWidth / vinylListCount * i;
-            // }
 
             spawnPointX = spawnAreaWidth / vinylListCount * i;
 
@@ -66,7 +62,9 @@ public class VinylSpawnAreaBehaviour : MonoBehaviour
 
             GameObject spawnedVinyl = Instantiate(currentVinyl, gameArea.transform);
 
-            spawnedVinyl.GetComponent<VinylBehaviour>().testVar = 15;
+            spawnedVinyl.GetComponent<VinylBehaviour>().lastLocation = spawnedVinyl.transform.position;
+            
+            spawnedVinylList.Add(spawnedVinyl);
         }
     }
 }

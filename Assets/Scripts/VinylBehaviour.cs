@@ -6,34 +6,60 @@ public class VinylBehaviour : MonoBehaviour
 {
     [SerializeField] private bool isDragging = false;
 
-    public int testVar = 1;
+    public Vector3 lastLocation;
 
-    private Vector3? lastLocation = null;
+    private bool onPlaceableSurface = false;
+
+    private bool isBagged = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        lastLocation = transform.position;
     }
 
     // Update is called once per frame
     void Update() {
-        print(testVar);
         if (isDragging)
         {
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        else if(!isDragging && lastLocation != null)
+        else if(!isDragging)
         {
-            if(transform.position != lastLocation)
+            if (onPlaceableSurface)
+            {
+                lastLocation = transform.position;
+            }
+            else
             {
                 transform.position = (Vector3)lastLocation;
             }
         }
     }
 
-    private void OnMouseDrag() {
-        lastLocation = transform.position;
+    private void OnMouseDown()
+    {
         isDragging = !isDragging;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("itemCounter"))
+        {
+            onPlaceableSurface = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("itemCounter"))
+        {
+            onPlaceableSurface = false;
+        }
+    }
+
+    public void bagVinyl()
+    {
+        isBagged = true;
     }
 }
