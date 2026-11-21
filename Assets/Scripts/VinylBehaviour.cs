@@ -8,9 +8,21 @@ public class VinylBehaviour : MonoBehaviour
 
     public Vector3 lastLocation;
 
-    private bool onPlaceableSurface = false;
+    private bool onItemCounter = false;
+    private bool onSpawnArea = false;
 
     private bool isBagged = false;
+    private bool isStationary = true;
+
+    private GameObject spawnArea;
+
+    public static bool isBeingDragged = false;
+
+    private VinylController vinylController;
+
+    private Vector3 lastPosition;
+
+    private GameObject vinylShelf;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,25 +38,40 @@ public class VinylBehaviour : MonoBehaviour
         {
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-        else if(!isDragging)
-        {
-            if (onPlaceableSurface)
-            {
-                lastLocation = transform.position;
-            }
-            else
-            {
-                transform.position = (Vector3)lastLocation;
-            }
-        }
     }
 
     private void OnMouseDown()
     {
-        if (!isBagged)
+        if(isDragging == false && vinylController.isAVinylBeingDragged == false)
         {
-            print("test");
-            isDragging = !isDragging;
+            isDragging = true;
+            vinylShelf.GetComponent<VinylShelfBehaviour>().toggleCollider();
+        }
+        else if(isDragging == true)
+        {
+            isDragging = false;
+            vinylShelf.GetComponent<VinylShelfBehaviour>().toggleCollider();
+        }
+        vinylController.isAVinylBeingDragged = isDragging;
+
+        if (isDragging)
+        {
+            transform.SetParent(null);
+        }
+        else
+        {
+            if (onItemCounter)
+            {
+                lastLocation = transform.position;
+            }
+            else if (onSpawnArea)
+            {
+                vinylShelf.GetComponent<VinylShelfBehaviour>().placeVinylInEmptySlot(gameObject);
+            }
+            else
+            {
+                transform.position = lastLocation;
+            }
         }
     }
 
@@ -53,7 +80,12 @@ public class VinylBehaviour : MonoBehaviour
         if (other.CompareTag("itemCounter"))
         {
             other.gameObject.GetComponent<ItemCounterBehaviour>().placeVinyl(gameObject);
-            onPlaceableSurface = true;
+            onItemCounter = true;
+        }
+        else if (other.CompareTag("spawnArea"))
+        {
+            print("on spawn Areaq");
+            onSpawnArea = true;
         }
     }
 
@@ -64,7 +96,11 @@ public class VinylBehaviour : MonoBehaviour
         if (other.CompareTag("itemCounter"))
         {
             other.gameObject.GetComponent<ItemCounterBehaviour>().removeVinyl();
-            onPlaceableSurface = false;
+            onItemCounter = false;
+        }
+        else if (other.CompareTag("spawnArea"))
+        {
+            onSpawnArea = false;
         }
     }
 
@@ -76,4 +112,18 @@ public class VinylBehaviour : MonoBehaviour
         if (col != null) col.enabled = false;
     }
 
+    public void setVinylController(VinylController controller)
+    {
+        vinylController = controller;
+    }
+
+    public void setSlotLocation(Vector3 lastPos)
+    {
+        lastLocation = lastPos;
+    }
+
+    public void setVinylShelf(GameObject shelf)
+    {
+        vinylShelf = shelf;
+    }
 }
