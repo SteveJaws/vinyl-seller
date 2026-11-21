@@ -34,6 +34,7 @@ public class VinylBehaviour : MonoBehaviour
     void Update() {
         if (isBagged) return;
 
+
         if (isDragging)
         {
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -42,36 +43,34 @@ public class VinylBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(isDragging == false && vinylController.isAVinylBeingDragged == false)
+        VinylShelfBehaviour shelf = vinylShelf.GetComponent<VinylShelfBehaviour>();
+
+        if (isDragging == false && vinylController.isAVinylBeingDragged == false)
         {
             isDragging = true;
-            vinylShelf.GetComponent<VinylShelfBehaviour>().toggleCollider();
+            vinylController.isAVinylBeingDragged = true;
+            transform.SetParent(null);
+            shelf.toggleCollider();
         }
-        else if(isDragging == true)
+        else if (isDragging == true)
         {
             isDragging = false;
-            vinylShelf.GetComponent<VinylShelfBehaviour>().toggleCollider();
-        }
-        vinylController.isAVinylBeingDragged = isDragging;
+            vinylController.isAVinylBeingDragged = false;
 
-        if (isDragging)
-        {
-            transform.SetParent(null);
-        }
-        else
-        {
             if (onItemCounter)
             {
                 lastLocation = transform.position;
             }
             else if (onSpawnArea)
             {
-                vinylShelf.GetComponent<VinylShelfBehaviour>().placeVinylInEmptySlot(gameObject);
+                shelf.placeVinylInEmptySlot(gameObject);
             }
             else
             {
                 transform.position = lastLocation;
             }
+
+            shelf.toggleCollider();
         }
     }
 
@@ -84,7 +83,6 @@ public class VinylBehaviour : MonoBehaviour
         }
         else if (other.CompareTag("spawnArea"))
         {
-            print("on spawn Areaq");
             onSpawnArea = true;
         }
     }

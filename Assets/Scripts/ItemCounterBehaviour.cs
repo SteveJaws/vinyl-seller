@@ -36,6 +36,7 @@ public class ItemCounterBehaviour : MonoBehaviour
         placedVinyl.transform.SetParent(bag.transform);
         placedVinyl.transform.position = bag.transform.position;
         placedVinyl.gameObject.GetComponent<VinylBehaviour>().bagVinyl();
+        bag.GetComponent<BagBehaviour>().setVinyl(placedVinyl);
         placedVinyl = null;
         return true;
     }

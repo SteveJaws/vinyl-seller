@@ -17,6 +17,12 @@ public class BagBehaviour : MonoBehaviour
 
     private bool hasVinyl = false;
 
+    private Vector3? lastLocation = null;
+
+    private GameObject vinyl;
+
+    private bool onSpawnArea = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +34,7 @@ public class BagBehaviour : MonoBehaviour
     {
         if (isDragging)
         {
+            print("onItemCounter: " + onItemCounter.ToString());
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
@@ -42,8 +49,15 @@ public class BagBehaviour : MonoBehaviour
         isDragging = !isDragging;
         if (!onBagDispenser && !onItemCounter)
         {
-            bagDispenserScript.spawnNewBag();
-            Destroy(gameObject);
+            if(lastLocation != null)
+            {
+                transform.position = (Vector3)lastLocation;
+            }
+            else
+            {
+                bagDispenserScript.spawnNewBag();
+                Destroy(gameObject);
+            }
         }
         else if (onItemCounter)
         {
@@ -58,7 +72,12 @@ public class BagBehaviour : MonoBehaviour
                 if (canBag)
                 {
                     hasVinyl = true;
+                    bagDispenserScript.spawnNewBag();
                 }
+            }
+            else
+            {
+                lastLocation = transform.position;
             }
         }
     }
@@ -75,6 +94,11 @@ public class BagBehaviour : MonoBehaviour
             itemCounter = other.gameObject;
             onItemCounter = true;
         }
+
+        if (other.CompareTag("spawnArea"))
+        {
+            onSpawnArea = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -89,5 +113,15 @@ public class BagBehaviour : MonoBehaviour
             itemCounter = null;
             onItemCounter = false;
         }
+
+        if (other.CompareTag("spawnArea"))
+        {
+            onSpawnArea = false;
+        }
+    }
+
+    public void setVinyl(GameObject vinylparam)
+    {
+        vinyl = vinylparam;
     }
 }
