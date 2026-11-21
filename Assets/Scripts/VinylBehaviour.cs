@@ -43,14 +43,11 @@ public class VinylBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        VinylShelfBehaviour shelf = vinylShelf.GetComponent<VinylShelfBehaviour>();
-
         if (isDragging == false && vinylController.isAVinylBeingDragged == false)
         {
             isDragging = true;
             vinylController.isAVinylBeingDragged = true;
             transform.SetParent(null);
-            shelf.toggleCollider();
         }
         else if (isDragging == true)
         {
@@ -63,14 +60,12 @@ public class VinylBehaviour : MonoBehaviour
             }
             else if (onSpawnArea)
             {
-                shelf.placeVinylInEmptySlot(gameObject);
+                setVinylIntoVinylSlot();
             }
             else
             {
                 transform.position = lastLocation;
             }
-
-            shelf.toggleCollider();
         }
     }
 
@@ -123,5 +118,11 @@ public class VinylBehaviour : MonoBehaviour
     public void setVinylShelf(GameObject shelf)
     {
         vinylShelf = shelf;
+    }
+
+    public void setVinylIntoVinylSlot()
+    {
+        VinylShelfBehaviour shelf = vinylShelf.GetComponent<VinylShelfBehaviour>();
+        shelf.placeVinylInEmptySlot(gameObject);
     }
 }

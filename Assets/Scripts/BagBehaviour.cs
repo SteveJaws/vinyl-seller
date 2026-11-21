@@ -34,7 +34,6 @@ public class BagBehaviour : MonoBehaviour
     {
         if (isDragging)
         {
-            print("onItemCounter: " + onItemCounter.ToString());
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
@@ -47,7 +46,7 @@ public class BagBehaviour : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = !isDragging;
-        if (!onBagDispenser && !onItemCounter)
+        if (!onBagDispenser && !onItemCounter && !onSpawnArea)
         {
             if(lastLocation != null)
             {
@@ -66,8 +65,7 @@ public class BagBehaviour : MonoBehaviour
                 bool canBag = itemCounter.GetComponent<ItemCounterBehaviour>().bagVinyl(gameObject);
                 if (!canBag)
                 {
-                    Destroy(gameObject);
-                    bagDispenserScript.spawnNewBag();
+                    destroyAndNewBag();
                 }
                 if (canBag)
                 {
@@ -78,6 +76,18 @@ public class BagBehaviour : MonoBehaviour
             else
             {
                 lastLocation = transform.position;
+            }
+        }
+        else if(onSpawnArea){
+            if (hasVinyl)
+            {
+                vinyl.GetComponent<VinylBehaviour>().setVinylIntoVinylSlot();
+                hasVinyl = false;
+                Destroy(gameObject);
+            }
+            else
+            {
+                destroyAndNewBag();
             }
         }
     }
@@ -123,5 +133,11 @@ public class BagBehaviour : MonoBehaviour
     public void setVinyl(GameObject vinylparam)
     {
         vinyl = vinylparam;
+    }
+
+    private void destroyAndNewBag()
+    {
+        Destroy(gameObject);
+        bagDispenserScript.spawnNewBag();
     }
 }

@@ -19,7 +19,6 @@ public class VinylShelfBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GetComponent<Collider2D>().enabled = false;
         spawnVinylSlots();
     }
 
@@ -73,11 +72,5 @@ public class VinylShelfBehaviour : MonoBehaviour
         vinylToPlace.transform.position = vinylSlotToPlaceVinylIn.transform.position;
         vinylToPlace.GetComponent<VinylBehaviour>().setSlotLocation(vinylSlotToPlaceVinylIn.transform.position);
         vinylToPlace.GetComponent<VinylBehaviour>().setVinylShelf(gameObject);
-    }
-
-    public void toggleCollider()
-    {
-        Collider2D myCollider = GetComponent<Collider2D>();
-        myCollider.enabled = !myCollider.enabled;
     }
 }
