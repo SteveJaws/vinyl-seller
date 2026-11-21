@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,6 +10,12 @@ public class BagBehaviour : MonoBehaviour
     private bool isDragging = false;
 
     private bool onBagDispenser = false;
+
+    private bool onItemCounter = false;
+
+    private GameObject itemCounter = null;
+
+    private bool hasVinyl = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,10 +40,26 @@ public class BagBehaviour : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = !isDragging;
-        if (!onBagDispenser)
+        if (!onBagDispenser && !onItemCounter)
         {
             bagDispenserScript.spawnNewBag();
             Destroy(gameObject);
+        }
+        else if (onItemCounter)
+        {
+            if(hasVinyl == false)
+            {
+                bool canBag = itemCounter.GetComponent<ItemCounterBehaviour>().bagVinyl(gameObject);
+                if (!canBag)
+                {
+                    Destroy(gameObject);
+                    bagDispenserScript.spawnNewBag();
+                }
+                if (canBag)
+                {
+                    hasVinyl = true;
+                }
+            }
         }
     }
 
@@ -45,6 +69,12 @@ public class BagBehaviour : MonoBehaviour
         {
             onBagDispenser = true;
         }
+
+        if (other.CompareTag("itemCounter"))
+        {
+            itemCounter = other.gameObject;
+            onItemCounter = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -52,6 +82,12 @@ public class BagBehaviour : MonoBehaviour
         if (other.CompareTag("bagDispenser"))
         {
             onBagDispenser = false;
+        }
+
+        if (other.CompareTag("itemCounter"))
+        {
+            itemCounter = null;
+            onItemCounter = false;
         }
     }
 }

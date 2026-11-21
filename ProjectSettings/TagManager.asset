@@ -53,6 +53,9 @@ TagManager:
   - name: Draggables
     uniqueID: 2338118357
     locked: 0
+  - name: DraggableOverlay
+    uniqueID: 1055018185
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000bf7526ddd5da5c8b9d3661efi
+  m_ApplyToSortingLayers: 00000000bf7526ddd5da5c8b9d3661efad7eb7bdc94ce23ei
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -793,6 +793,7 @@ GameObject:
   - component: {fileID: 1925608678}
   - component: {fileID: 1925608676}
   - component: {fileID: 1925608675}
+  - component: {fileID: 1925608679}
   m_Layer: 0
   m_Name: ItemCounter
   m_TagString: itemCounter
@@ -948,6 +949,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1925608679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925608673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6a1e684a8102d35ae0481f4f480929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemCounterBehaviour
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

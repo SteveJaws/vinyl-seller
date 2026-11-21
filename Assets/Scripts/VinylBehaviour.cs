@@ -20,6 +20,8 @@ public class VinylBehaviour : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (isBagged) return;
+
         if (isDragging)
         {
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -39,21 +41,29 @@ public class VinylBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isDragging = !isDragging;
+        if (!isBagged)
+        {
+            print("test");
+            isDragging = !isDragging;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("itemCounter"))
         {
+            other.gameObject.GetComponent<ItemCounterBehaviour>().placeVinyl(gameObject);
             onPlaceableSurface = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (isBagged) return;
+
         if (other.CompareTag("itemCounter"))
         {
+            other.gameObject.GetComponent<ItemCounterBehaviour>().removeVinyl();
             onPlaceableSurface = false;
         }
     }
@@ -61,5 +71,9 @@ public class VinylBehaviour : MonoBehaviour
     public void bagVinyl()
     {
         isBagged = true;
+
+        Collider2D col = GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
     }
+
 }
