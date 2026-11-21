@@ -48,6 +48,9 @@ TagManager:
   - name: Background
     uniqueID: 3710285247
     locked: 0
+  - name: Customer
+    uniqueID: 2680634869
+    locked: 0
   - name: ItemArea
     uniqueID: 4016125597
     locked: 0
