@@ -85,6 +85,7 @@ public class BagBehaviour : MonoBehaviour
             if (hasVinyl)
             {
                 vinyl.GetComponent<VinylBehaviour>().setVinylIntoVinylSlot();
+                vinyl.GetComponent<VinylBehaviour>().unBagVinyl();
                 hasVinyl = false;
                 Destroy(gameObject);
             }
@@ -95,7 +96,7 @@ public class BagBehaviour : MonoBehaviour
         }
         else if (onCustomer)
         {
-            if (hasVinyl)
+            if (hasVinyl && isBaggedVinylWanted)
             {
                 isBaggedVinylWanted = false;
                 destroyAndNewBag();
@@ -135,7 +136,6 @@ public class BagBehaviour : MonoBehaviour
             onCustomer = true;
             CustomerBehaviour customerScript = other.GetComponent<CustomerBehaviour>();
             isBaggedVinylWanted = customerScript.isBaggedVinylWantedVinyl(vinyl);
-            print(isBaggedVinylWanted);
         }
     }
 

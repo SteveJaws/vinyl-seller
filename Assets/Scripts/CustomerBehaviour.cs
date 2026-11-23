@@ -15,6 +15,8 @@ public class CustomerBehaviour : MonoBehaviour
     [SerializeField] private float moveSpeed = 20f;        // units per seconde
     [SerializeField] private float stopDistance = 0.1f;
 
+    private bool moveToSpawn = false;
+
     private GameObject wantedVinyl;
 
     // Awake i.p.v. Start: setSpawnAndTarget wordt vaak direct na Instantiate aangeroepen, vóór Start
@@ -26,21 +28,22 @@ public class CustomerBehaviour : MonoBehaviour
 
     void FixedUpdate()
     {
-        print("test1");
         if (!moving || movingToVector == null) return;
-        print("test2");
 
         Vector3 toTarget = movingToVector.Value - transform.position;
         toTarget.y = 0f; // alleen horizontaal bewegen
 
         if (toTarget.magnitude <= stopDistance)
         {
-            print("reached destination");
             moving = false;
+            if (moveToSpawn)
+            {
+                moveToSpawn = false;
+                customerMoveToTarget();
+            }
             return;
         }
 
-        // Waarbij targetPosition de echte positie (Vector3) is waar je naartoe wilt
         transform.position = Vector3.MoveTowards(transform.position, (Vector3)movingToVector, moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -52,9 +55,9 @@ public class CustomerBehaviour : MonoBehaviour
 
     public void customerMoveToSpawn()
     {
-        print("moving");
         movingToVector = spawn.transform.position;
         moving = true;
+        moveToSpawn = true;
     }
 
     public void setSpawnAndTarget(GameObject spawnParam, GameObject targetParam)
