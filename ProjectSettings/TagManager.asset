@@ -52,6 +52,9 @@ TagManager:
   - name: Customer
     uniqueID: 2680634869
     locked: 0
+  - name: Counter
+    uniqueID: 755049975
+    locked: 0
   - name: ItemArea
     uniqueID: 4016125597
     locked: 0
