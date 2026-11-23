@@ -31,10 +31,9 @@ public class VinylBehaviour : MonoBehaviour
     void Awake()
     {
         lastLocation = transform.position;
-    }
 
-    void Start()
-    {
+        // In Awake i.p.v. Start: Awake draait direct tijdens Instantiate,
+        // zodat overrideColor() daarna de random kleur kan overschrijven
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = UnityEngine.Random.ColorHSV();
     }
@@ -141,5 +140,15 @@ public class VinylBehaviour : MonoBehaviour
     {
         VinylShelfBehaviour shelf = vinylShelf.GetComponent<VinylShelfBehaviour>();
         shelf.placeVinylInEmptySlot(gameObject);
+    }
+
+    public void overrideColor(Color color)
+    {
+        spriteRenderer.color = color;
+    }
+
+    public Color getColor()
+    {
+        return spriteRenderer.color;
     }
 }

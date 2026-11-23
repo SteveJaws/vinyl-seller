@@ -78,9 +78,16 @@ public class CustomerBehaviour : MonoBehaviour
             GameObject chosenVinyl = AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().customerChooseVinyl();
             if(chosenVinyl != null)
             {
-                wantedVinyl = chosenVinyl;
                 chooseVinyl = false;
                 wantedVinyl = chosenVinyl;
+
+                GameObject vinylClone = Instantiate(wantedVinyl);
+                spawn GEWOON EEN KEER DE VINYL OP DE CUSTOMER EN DAARNA VERANDER JE DE KLEUR ANDERS MOET JE HEM TELKENS WEER VERWIJDEREN
+                vinylClone.GetComponent<Collider2D>().enabled = false;
+                vinylClone.GetComponent<VinylBehaviour>().enabled = false; // overrideColor eerst aanroepen
+                vinylClone.GetComponent<SpriteRenderer>().color = wantedVinyl.GetComponent<SpriteRenderer>().color;
+                vinylClone.transform.position = transform.position;/* bv. boven de klant */
+                vinylClone.transform.SetParent(transform);
             }
         }
     }

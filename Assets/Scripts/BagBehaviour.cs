@@ -136,6 +136,7 @@ public class BagBehaviour : MonoBehaviour
             onCustomer = true;
             CustomerBehaviour customerScript = other.GetComponent<CustomerBehaviour>();
             isBaggedVinylWanted = customerScript.isBaggedVinylWantedVinyl(vinyl);
+            print(isBaggedVinylWanted);
         }
     }
 
