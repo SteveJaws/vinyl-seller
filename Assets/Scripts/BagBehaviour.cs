@@ -12,6 +12,7 @@ public class BagBehaviour : MonoBehaviour
     private bool onBagDispenser = false;
 
     private bool onItemCounter = false;
+    private bool onCustomer = false;
 
     private GameObject itemCounter = null;
 
@@ -32,6 +33,7 @@ public class BagBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // print("On customer: " + onCustomer);
         if (isDragging)
         {
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -109,6 +111,11 @@ public class BagBehaviour : MonoBehaviour
         {
             onSpawnArea = true;
         }
+
+        if (other.CompareTag("customer"))
+        {
+            onCustomer = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -127,6 +134,11 @@ public class BagBehaviour : MonoBehaviour
         if (other.CompareTag("spawnArea"))
         {
             onSpawnArea = false;
+        }
+
+        if (other.CompareTag("customer"))
+        {
+            onCustomer = false;
         }
     }
 

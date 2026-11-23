@@ -9,7 +9,7 @@ public class CustomerBehaviour : MonoBehaviour
 
     private Vector3? movingToVector = null;
 
-    private CharacterController cc;
+    private Rigidbody2D rb;
 
     [SerializeField] private float moveSpeed = 2f;        // units per seconde
     [SerializeField] private float stopDistance = 0.1f;
@@ -17,7 +17,7 @@ public class CustomerBehaviour : MonoBehaviour
     // Awake i.p.v. Start: setSpawnAndTarget wordt vaak direct na Instantiate aangeroepen, vóór Start
     void Awake()
     {
-        cc = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void FixedUpdate()
@@ -33,7 +33,10 @@ public class CustomerBehaviour : MonoBehaviour
             return;
         }
 
-        cc.Move(toTarget.normalized * moveSpeed * Time.fixedDeltaTime);
+        // cc.Move(toTarget.normalized * moveSpeed * Time.fixedDeltaTime);
+        rb.AddForce(toTarget.normalized * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
+        transform.position = Vector3.MoveTowards(transform.position, toTarget.normalized * moveSpeed * Time.fixedDeltaTime, 0.1f);
+        // rb.Appl
     }
 
     public void customerMoveToTarget()
@@ -48,8 +51,8 @@ public class CustomerBehaviour : MonoBehaviour
         target = targetParam;
 
         // CharacterController overschrijft transform.position anders soms meteen weer
-        cc.enabled = false;
+        // rb.enabled = false;
         transform.position = spawn.transform.position;
-        cc.enabled = true;
+        // cc.enabled = true;
     }
 }

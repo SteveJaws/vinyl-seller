@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 835871652}
   - component: {fileID: 835871651}
   - component: {fileID: 835871650}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ItemCounter
   m_TagString: itemCounter
   m_Icon: {fileID: 0}

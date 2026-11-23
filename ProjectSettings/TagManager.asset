@@ -8,6 +8,7 @@ TagManager:
   - vinyl
   - bagDispenser
   - spawnArea
+  - customer
   layers:
   - Default
   - TransparentFX
