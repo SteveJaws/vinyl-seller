@@ -27,6 +27,8 @@ public class VinylBehaviour : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private Vector3 originalScale;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -36,6 +38,11 @@ public class VinylBehaviour : MonoBehaviour
         // zodat overrideColor() daarna de random kleur kan overschrijven
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.color = UnityEngine.Random.ColorHSV();
+    }
+
+    void Start()
+    {
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -75,6 +82,16 @@ public class VinylBehaviour : MonoBehaviour
                 transform.position = lastLocation;
             }
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        transform.localScale = transform.localScale * 1.2f;
+    }
+
+    private void OnMouseExit()
+    {
+        transform.localScale = originalScale;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -1207,6 +1207,7 @@ GameObject:
   - component: {fileID: 1517743497}
   - component: {fileID: 1517743496}
   - component: {fileID: 1517743495}
+  - component: {fileID: 1517743499}
   m_Layer: 2
   m_Name: SpawnAreaVinyl
   m_TagString: spawnArea
@@ -1224,7 +1225,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.17, y: -2.81, z: 1}
-  m_LocalScale: {x: 5.8724, y: 2.173, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 77571628}
@@ -1309,13 +1310,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 6.74, y: 1.91}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.61, y: 1.85}
   m_EdgeRadius: 0
 --- !u!212 &1517743498
 SpriteRenderer:
@@ -1366,8 +1367,8 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.55460125, g: 0.84152365, b: 0.9716981, a: 1}
+  m_Sprite: {fileID: -4913982344839117222, guid: 37ca78089a783fa439af7a69df65a78b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1377,6 +1378,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &1517743499
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517743493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4f46fc5bc3c8db77b890c58dc563722, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1859856967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1528,7 @@ GameObject:
   - component: {fileID: 1931600837}
   - component: {fileID: 1931600836}
   - component: {fileID: 1931600835}
+  - component: {fileID: 1931600839}
   m_Layer: 2
   m_Name: BagDispenser
   m_TagString: bagDispenser
@@ -1521,8 +1545,8 @@ Transform:
   m_GameObject: {fileID: 1931600833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.27, y: -2.73, z: 0}
-  m_LocalScale: {x: 2.36, y: 1.76, z: 1}
+  m_LocalPosition: {x: -7.02, y: -2.92, z: 0}
+  m_LocalScale: {x: 0.3667, y: 0.3667, z: 0.3667}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 77571628}
@@ -1592,13 +1616,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 4.59, y: 4.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.71, y: 4.33}
   m_EdgeRadius: 0
 --- !u!114 &1931600837
 MonoBehaviour:
@@ -1662,8 +1686,8 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.5518868, b: 0.893481, a: 1}
+  m_Sprite: {fileID: -4913982344839117222, guid: 6fa826592bdfc41539128a32ecf242e5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1673,6 +1697,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!95 &1931600839
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931600833}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56b28f2242fafb1d1848e8ff056918ee, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1969164903
 GameObject:
   m_ObjectHideFlags: 0

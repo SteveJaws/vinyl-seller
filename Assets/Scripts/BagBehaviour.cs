@@ -26,10 +26,12 @@ public class BagBehaviour : MonoBehaviour
 
     private bool isBaggedVinylWanted = false;
 
+    private Vector3 originalScale;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -173,5 +175,15 @@ public class BagBehaviour : MonoBehaviour
     {
         Destroy(gameObject);
         bagDispenserScript.spawnNewBag();
+    }
+
+    private void OnMouseEnter()
+    {
+        transform.localScale = transform.localScale * 1.2f;
+    }
+
+    private void OnMouseExit()
+    {
+        transform.localScale = originalScale;
     }
 }

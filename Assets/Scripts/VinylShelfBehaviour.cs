@@ -47,8 +47,10 @@ public class VinylShelfBehaviour : MonoBehaviour
 
             Vector3 newPos = transform.position; 
 
-            newPos.x = spawnAreaWidth / 2;
+            newPos.x -= spawnAreaWidth / 2;
             newPos.x += spawnPointX;
+            newPos.x += vinylPrefab.GetComponent<SpriteRenderer>().bounds.size.x / 1.5f;
+
 
             vinylSlot.transform.position = newPos;
             placeVinylInEmptySlot();
