@@ -19,11 +19,19 @@ public class CustomerBehaviour : MonoBehaviour
 
     private GameObject wantedVinyl;
 
+    [SerializeField] private GameObject vinylPrefab;
+    private GameObject vinylProp;
+
     // Awake i.p.v. Start: setSpawnAndTarget wordt vaak direct na Instantiate aangeroepen, vóór Start
     void Awake()
     {
+        spawnWantedVinylProp();
         rb = GetComponent<Rigidbody2D>();
         AutoloadUnity.customer = gameObject;
+    }
+
+    void Start()
+    {
     }
 
     void FixedUpdate()
@@ -40,6 +48,7 @@ public class CustomerBehaviour : MonoBehaviour
             {
                 moveToSpawn = false;
                 customerMoveToTarget();
+                chooseVinyl();
             }
             return;
         }
@@ -81,13 +90,7 @@ public class CustomerBehaviour : MonoBehaviour
                 chooseVinyl = false;
                 wantedVinyl = chosenVinyl;
 
-                GameObject vinylClone = Instantiate(wantedVinyl);
-                spawn GEWOON EEN KEER DE VINYL OP DE CUSTOMER EN DAARNA VERANDER JE DE KLEUR ANDERS MOET JE HEM TELKENS WEER VERWIJDEREN
-                vinylClone.GetComponent<Collider2D>().enabled = false;
-                vinylClone.GetComponent<VinylBehaviour>().enabled = false; // overrideColor eerst aanroepen
-                vinylClone.GetComponent<SpriteRenderer>().color = wantedVinyl.GetComponent<SpriteRenderer>().color;
-                vinylClone.transform.position = transform.position;/* bv. boven de klant */
-                vinylClone.transform.SetParent(transform);
+                vinylProp.GetComponent<SpriteRenderer>().color = wantedVinyl.GetComponent<SpriteRenderer>().color;
             }
         }
     }
@@ -116,5 +119,14 @@ public class CustomerBehaviour : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void spawnWantedVinylProp()
+    {
+        vinylProp = Instantiate(vinylPrefab);
+        vinylProp.GetComponent<Collider2D>().enabled = false;
+        vinylProp.GetComponent<VinylBehaviour>().enabled = false;
+        vinylProp.transform.position = transform.position;
+        vinylProp.transform.SetParent(transform);
     }
 }

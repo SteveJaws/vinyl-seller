@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerBehaviour
   moveSpeed: 5
   stopDistance: 0.1
+  vinylPrefab: {fileID: 6956092980113757996, guid: 14e6b42054a5046b39234268d7c5d2e5, type: 3}
 --- !u!50 &8369907585508014134
 Rigidbody2D:
   serializedVersion: 5

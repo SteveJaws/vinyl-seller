@@ -99,10 +99,9 @@ public class BagBehaviour : MonoBehaviour
             if (hasVinyl && isBaggedVinylWanted)
             {
                 isBaggedVinylWanted = false;
-                destroyAndNewBag();
+                Destroy(gameObject);
                 AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().placeVinylInEmptySlot();
                 AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().removeVinylFromList(vinyl);
-                AutoloadUnity.customer.GetComponent<CustomerBehaviour>().chooseVinyl();
                 AutoloadUnity.customer.GetComponent<CustomerBehaviour>().customerMoveToSpawn();
                 AutoloadUnity.cash += 10;
             }
