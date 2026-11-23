@@ -24,6 +24,8 @@ public class BagBehaviour : MonoBehaviour
 
     private bool onSpawnArea = false;
 
+    private bool isBaggedVinylWanted = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +35,6 @@ public class BagBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // print("On customer: " + onCustomer);
         if (isDragging)
         {
             transform.position = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -48,7 +49,7 @@ public class BagBehaviour : MonoBehaviour
     private void OnMouseDown()
     {
         isDragging = !isDragging;
-        if (!onBagDispenser && !onItemCounter && !onSpawnArea)
+        if (!onBagDispenser && !onItemCounter && !onSpawnArea && !onCustomer)
         {
             if(lastLocation != null)
             {
@@ -92,6 +93,23 @@ public class BagBehaviour : MonoBehaviour
                 destroyAndNewBag();
             }
         }
+        else if (onCustomer)
+        {
+            if (hasVinyl)
+            {
+                isBaggedVinylWanted = false;
+                destroyAndNewBag();
+                AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().placeVinylInEmptySlot();
+                AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().removeVinylFromList(vinyl);
+                AutoloadUnity.customer.GetComponent<CustomerBehaviour>().chooseVinyl();
+                AutoloadUnity.customer.GetComponent<CustomerBehaviour>().customerMoveToSpawn();
+                AutoloadUnity.cash += 10;
+            }
+            else
+            {
+                transform.position = (Vector3)lastLocation;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -115,6 +133,9 @@ public class BagBehaviour : MonoBehaviour
         if (other.CompareTag("customer"))
         {
             onCustomer = true;
+            CustomerBehaviour customerScript = other.GetComponent<CustomerBehaviour>();
+            isBaggedVinylWanted = customerScript.isBaggedVinylWantedVinyl(vinyl);
+            print(isBaggedVinylWanted);
         }
     }
 
@@ -139,6 +160,7 @@ public class BagBehaviour : MonoBehaviour
         if (other.CompareTag("customer"))
         {
             onCustomer = false;
+            isBaggedVinylWanted = false;
         }
     }
 

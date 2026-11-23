@@ -16,16 +16,19 @@ public class VinylShelfBehaviour : MonoBehaviour
 
     private VinylController vinylController = new VinylController();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public List<GameObject> vinylList = new List<GameObject>();
+
+    // Awake i.p.v. Start: andere scripts (zoals GameAreaBehaviour) gebruiken de shelf al in hun Start()
+    void Awake()
     {
+        AutoloadUnity.shelf = gameObject;
         spawnVinylSlots();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void spawnVinylSlots()
@@ -72,5 +75,30 @@ public class VinylShelfBehaviour : MonoBehaviour
         vinylToPlace.transform.position = vinylSlotToPlaceVinylIn.transform.position;
         vinylToPlace.GetComponent<VinylBehaviour>().setSlotLocation(vinylSlotToPlaceVinylIn.transform.position);
         vinylToPlace.GetComponent<VinylBehaviour>().setVinylShelf(gameObject);
+        vinylList.Add(vinylToPlace);
+    }
+
+    public void removeVinylFromList(GameObject vinylParam)
+    {
+        vinylList.Remove(vinylParam);
+    }
+
+    public GameObject customerChooseVinyl()
+    {
+        List<GameObject> vinylList = AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().vinylList;
+        
+        if (vinylList.Count > 0)
+        {
+            // Kies een willekeurige index van 0 tot het aantal items
+            int randomIndex = Random.Range(0, vinylList.Count);
+            GameObject randomItem = vinylList[randomIndex];
+
+            Debug.Log("Willekeurig item: " + randomItem);
+            return randomItem;
+        }
+        else
+        {
+            return null;
+        }
     }
 }

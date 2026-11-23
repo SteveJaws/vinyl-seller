@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework.Internal;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -24,10 +25,18 @@ public class VinylBehaviour : MonoBehaviour
 
     private GameObject vinylShelf;
 
+    private SpriteRenderer spriteRenderer;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         lastLocation = transform.position;
+    }
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = UnityEngine.Random.ColorHSV();
     }
 
     // Update is called once per frame

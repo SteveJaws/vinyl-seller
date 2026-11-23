@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107d06c30ebf05ad9b8839d2cc896eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerBehaviour
-  moveSpeed: 2
+  moveSpeed: 10
   stopDistance: 0.1
 --- !u!50 &8369907585508014134
 Rigidbody2D:
