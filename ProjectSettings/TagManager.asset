@@ -49,6 +49,12 @@ TagManager:
   - name: Background
     uniqueID: 3710285247
     locked: 0
+  - name: behindOnBackground
+    uniqueID: 3922000653
+    locked: 0
+  - name: onBackground
+    uniqueID: 3052133677
+    locked: 0
   - name: Customer
     uniqueID: 2680634869
     locked: 0
