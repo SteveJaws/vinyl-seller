@@ -49,7 +49,7 @@ public class ShopContentBehaviour : MonoBehaviour
 
         itemImage.transform.position = transform.position;
 
-        itemImage.transform.SetParent(itemTile.transform);
+        itemImage.transform.SetParent(itemTile.transform, false);
 
         itemImage.transform.position = new Vector3(0, 0, 0);
 
@@ -60,11 +60,11 @@ public class ShopContentBehaviour : MonoBehaviour
 
         textName.transform.localScale = scaleDownVector;
 
-        textName.transform.SetParent(itemTile.transform);
+        textName.transform.SetParent(itemTile.transform, false);
 
-        textPrice.transform.SetParent(itemTile.transform);
+        textPrice.transform.SetParent(itemTile.transform, false);
 
-        itemTile.transform.SetParent(transform);
+        itemTile.transform.SetParent(transform, false);
     }
 
     private void buyItem(ShopItem item, GameObject price)

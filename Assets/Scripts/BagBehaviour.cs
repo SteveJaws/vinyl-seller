@@ -107,6 +107,16 @@ public class BagBehaviour : MonoBehaviour
                 AutoloadUnity.customer.GetComponent<CustomerBehaviour>().customerMoveToSpawn();
                 AutoloadUnity.cash += 10;
             }
+            else if(hasVinyl && !isBaggedVinylWanted)
+            {
+                Destroy(gameObject);
+                AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().placeVinylInEmptySlot();
+                AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().removeVinylFromList(vinyl);
+                AutoloadUnity.customer.GetComponent<CustomerBehaviour>().customerMoveToSpawn();
+                transform.position = (Vector3)lastLocation;
+                AutoloadUnity.cash -= 10;
+                if(AutoloadUnity.cash < 0) AutoloadUnity.cash = 0;
+            }
             else
             {
                 transform.position = (Vector3)lastLocation;

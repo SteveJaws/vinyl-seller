@@ -28,6 +28,10 @@ public class UiButton : MonoBehaviour
 
     private void togglerBehaviour(GameObject toToggle)
     {
-        toToggle.gameObject.SetActive(!toToggle.gameObject.activeSelf);
+        foreach(UiButtonToggler buttonToggler in UiButtonTogglerList)
+        {
+            buttonToggler.toToggle.gameObject.SetActive(false);
+        }
+        toToggle.gameObject.SetActive(true);
     }
 }
