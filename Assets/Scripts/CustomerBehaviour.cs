@@ -22,6 +22,9 @@ public class CustomerBehaviour : MonoBehaviour
     [SerializeField] private GameObject vinylPrefab;
     private GameObject vinylProp;
 
+    [SerializeField] private GameObject vinylPosition;
+    [SerializeField] private GameObject speechBubble;
+
     // Awake i.p.v. Start: setSpawnAndTarget wordt vaak direct na Instantiate aangeroepen, vóór Start
     void Awake()
     {
@@ -32,6 +35,9 @@ public class CustomerBehaviour : MonoBehaviour
 
     void Start()
     {
+        GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f);
+        speechBubble.SetActive(false);
+        vinylProp.SetActive(false);
     }
 
     void FixedUpdate()
@@ -49,6 +55,11 @@ public class CustomerBehaviour : MonoBehaviour
                 moveToSpawn = false;
                 customerMoveToTarget();
                 chooseVinyl();
+                GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f);
+            }
+            else{
+                speechBubble.SetActive(true);
+                vinylProp.SetActive(true);
             }
             return;
         }
@@ -128,5 +139,12 @@ public class CustomerBehaviour : MonoBehaviour
         vinylProp.GetComponent<VinylBehaviour>().enabled = false;
         vinylProp.transform.position = transform.position;
         vinylProp.transform.SetParent(transform);
+        vinylProp.transform.localPosition = vinylPosition.transform.localPosition;
+    }
+
+    public void disableSpeechBubble()
+    {
+        speechBubble.SetActive(false);
+        vinylProp.SetActive(false);
     }
 }

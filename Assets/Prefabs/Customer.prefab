@@ -150,6 +150,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8406261676816189088}
+  - {fileID: 6882496881384394036}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8883943192451714491
@@ -227,6 +228,8 @@ MonoBehaviour:
   moveSpeed: 5
   stopDistance: 0.1
   vinylPrefab: {fileID: 6956092980113757996, guid: 14e6b42054a5046b39234268d7c5d2e5, type: 3}
+  vinylPosition: {fileID: 5140396296458859190}
+  speechBubble: {fileID: 1298386672031159785}
 --- !u!50 &8369907585508014134
 Rigidbody2D:
   serializedVersion: 5
@@ -322,3 +325,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &5140396296458859190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6882496881384394036}
+  m_Layer: 0
+  m_Name: VinylPostion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6882496881384394036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5140396296458859190}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20.32, y: 13.11, z: 0}
+  m_LocalScale: {x: 4.337575, y: 4.337575, z: 4.337575}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5379726025140416000}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

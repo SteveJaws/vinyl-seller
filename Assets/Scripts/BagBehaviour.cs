@@ -106,6 +106,7 @@ public class BagBehaviour : MonoBehaviour
                 AutoloadUnity.shelf.GetComponent<VinylShelfBehaviour>().removeVinylFromList(vinyl);
                 AutoloadUnity.customer.GetComponent<CustomerBehaviour>().customerMoveToSpawn();
                 AutoloadUnity.cash += 10;
+                AutoloadUnity.customer.GetComponent<CustomerBehaviour>().disableSpeechBubble();
             }
             else if(hasVinyl && !isBaggedVinylWanted)
             {
@@ -116,6 +117,7 @@ public class BagBehaviour : MonoBehaviour
                 transform.position = (Vector3)lastLocation;
                 AutoloadUnity.cash -= 10;
                 if(AutoloadUnity.cash < 0) AutoloadUnity.cash = 0;
+                AutoloadUnity.customer.GetComponent<CustomerBehaviour>().disableSpeechBubble();
             }
             else
             {

@@ -37,7 +37,7 @@ public class VinylBehaviour : MonoBehaviour
         // In Awake i.p.v. Start: Awake draait direct tijdens Instantiate,
         // zodat overrideColor() daarna de random kleur kan overschrijven
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = UnityEngine.Random.ColorHSV();
+        GetComponent<SpriteRenderer>().color = UnityEngine.Random.ColorHSV(0f, 1f, 0.7f, 1f, 0.8f, 1f);
     }
 
     void Start()
