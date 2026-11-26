@@ -9,4 +9,6 @@ public static class AutoloadUnity
     public static GameObject customer;
 
     public static GameObject gameArea;
+    
+    public static GameObject gameMaster;
 }

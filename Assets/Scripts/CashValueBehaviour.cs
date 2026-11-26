@@ -19,6 +19,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     void Update()
     {
         TMPro.TextMeshProUGUI ding = GetComponent<TMPro.TextMeshProUGUI>();
-        ding.text = AutoloadUnity.cash.ToString();
+        ding.text = AutoloadUnity.gameMaster.GetComponent<GameMasterBehaviour>().getEarnedCash().ToString();
+
     }
 }
