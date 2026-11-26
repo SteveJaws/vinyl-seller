@@ -28,6 +28,8 @@ public class TogglerBehaviour : MonoBehaviour
 
     private void togglerBehaviour(GameObject toToggle)
     {
+        print("is " + toToggle.gameObject.activeSelf);
+        print("to " + !toToggle.gameObject.activeSelf);
         toToggle.gameObject.SetActive(!toToggle.gameObject.activeSelf);
     }
 }

@@ -7,7 +7,7 @@ public class GameMasterBehaviour : MonoBehaviour
     [SerializeField] private GameObject gameArea;
     private GameObject spawnedGameArea;
 
-    private Day day = new Day(10, 10, 50, -50);
+    private Day day = new Day(0, 0, 0, 0);
 
     private int earnedCash = 0;
 
@@ -25,26 +25,12 @@ public class GameMasterBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inputHandler();
+        
     }
 
-    private void inputHandler()
+    public void startDay(Day dayParam)
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if(spawnedGameArea != null) return;
-            startDay();
-        }
-        else if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if(spawnedGameArea == null) return;
-            Destroy(spawnedGameArea);
-            spawnedGameArea = null;
-        }
-    }
-
-    private void startDay()
-    {
+        day = dayParam;
         earnedCash = 0;
         spawnedGameArea = Instantiate(gameArea);
         spawnedGameArea.transform.position = transform.position;
@@ -63,6 +49,8 @@ public class GameMasterBehaviour : MonoBehaviour
         }
         Destroy(spawnedGameArea);
         spawnedGameArea = null;
+        day = new Day(0, 0, 0, 0);
+        AutoloadUnity.mainMenu.SetActive(true);
     }
 
     public void updateCash(int amount)
