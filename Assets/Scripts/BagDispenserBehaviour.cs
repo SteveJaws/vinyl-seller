@@ -19,7 +19,7 @@ public class BagDispenserBehaviour : MonoBehaviour
 
     public void spawnNewBag()
     {
-        GameObject spawnedBag = Instantiate(bag);
+        GameObject spawnedBag = Instantiate(bag, AutoloadUnity.gameArea.transform);
         spawnedBag.transform.position = transform.position;
 
         BagBehaviour bagScript = spawnedBag.GetComponent<BagBehaviour>();

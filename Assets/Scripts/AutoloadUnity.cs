@@ -7,4 +7,6 @@ public static class AutoloadUnity
     public static int cash = 0;
 
     public static GameObject customer;
+
+    public static GameObject gameArea;
 }

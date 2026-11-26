@@ -40,6 +40,7 @@ public class VinylShelfBehaviour : MonoBehaviour
         for(int i = 0; i < vinylSlots; i++)
         {
             GameObject vinylSlot = new GameObject("viylSlot" + i.ToString());
+            vinylSlot.transform.SetParent(AutoloadUnity.gameArea.transform);
             // vinylSlot.transform.SetParent(transform);
             vinylSlotList.Add(vinylSlot);
 
@@ -63,7 +64,7 @@ public class VinylShelfBehaviour : MonoBehaviour
 
         if(vinylParam == null)
         {
-            GameObject spawnedVinyl = Instantiate(vinylPrefab);
+            GameObject spawnedVinyl = Instantiate(vinylPrefab, transform);
             spawnedVinyl.GetComponent<VinylBehaviour>().setVinylController(vinylController);
             vinylToPlace = spawnedVinyl;
         }
