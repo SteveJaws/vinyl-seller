@@ -49,8 +49,9 @@ public class GameMasterBehaviour : MonoBehaviour
         }
         Destroy(spawnedGameArea);
         spawnedGameArea = null;
-        day = new Day(0, 0, 0, 0);
+        AutoloadUnity.mainMenu.GetComponent<MainMenuBehaviour>().endDay(earnedCash, day.quota);
         AutoloadUnity.mainMenu.SetActive(true);
+        day = new Day(0, 0, 0, 0);
     }
 
     public void updateCash(int amount)

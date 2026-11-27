@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class MainMenuBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject endDayScreen;
     void Awake()
     {
         AutoloadUnity.mainMenu = gameObject;
@@ -16,5 +18,10 @@ public class MainMenuBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void endDay(int earnedCash, int quota)
+    {
+        endDayScreen.GetComponent<EndDayScreenBehaviour>().endDay(earnedCash, quota);
     }
 }
