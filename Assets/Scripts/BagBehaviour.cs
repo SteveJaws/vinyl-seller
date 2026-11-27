@@ -117,6 +117,7 @@ public class BagBehaviour : MonoBehaviour
                 AutoloadUnity.customer.GetComponent<CustomerBehaviour>().customerMoveToSpawn();
                 transform.position = (Vector3)lastLocation;
                 AutoloadUnity.gameMaster.GetComponent<GameMasterBehaviour>().updateCash(-10);
+                if(AutoloadUnity.gameMaster.GetComponent<GameMasterBehaviour>().getEarnedCash() < 0) AutoloadUnity.gameMaster.GetComponent<GameMasterBehaviour>().setCash(0);
                 AutoloadUnity.cash -= 10;
                 if(AutoloadUnity.cash < 0) AutoloadUnity.cash = 0;
                 AutoloadUnity.customer.GetComponent<CustomerBehaviour>().disableSpeechBubble();

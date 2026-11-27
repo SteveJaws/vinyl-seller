@@ -29,6 +29,8 @@ public class VinylBehaviour : MonoBehaviour
 
     private Vector3 originalScale;
 
+    private bool bagOnVinyl = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -47,7 +49,7 @@ public class VinylBehaviour : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (isBagged) return;
+        if (isBagged || bagOnVinyl && isDragging == false) return;
 
 
         if (isDragging)
@@ -105,6 +107,10 @@ public class VinylBehaviour : MonoBehaviour
         {
             onSpawnArea = true;
         }
+        else if (other.CompareTag("bag"))
+        {
+            bagOnVinyl = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -119,6 +125,10 @@ public class VinylBehaviour : MonoBehaviour
         else if (other.CompareTag("spawnArea"))
         {
             onSpawnArea = false;
+        }
+        else if (other.CompareTag("bag"))
+        {
+            bagOnVinyl = false;
         }
     }
 

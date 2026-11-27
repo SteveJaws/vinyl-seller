@@ -37,6 +37,23 @@ public class GameMasterBehaviour : MonoBehaviour
         StartCoroutine(Timer(day.time));
     }
 
+    public Day getDay()
+    {
+        return day;
+    }
+
+    public bool didUserWin()
+    {
+         if(earnedCash < day.quota)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     private void endDay()
     {
         if(earnedCash < day.quota)
@@ -57,6 +74,11 @@ public class GameMasterBehaviour : MonoBehaviour
     public void updateCash(int amount)
     {
         earnedCash += amount;
+    }
+
+    public void setCash(int amount)
+    {
+        earnedCash = amount;
     }
 
     public int getEarnedCash()

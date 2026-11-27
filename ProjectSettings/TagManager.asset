@@ -9,6 +9,7 @@ TagManager:
   - bagDispenser
   - spawnArea
   - customer
+  - bag
   layers:
   - Default
   - TransparentFX
