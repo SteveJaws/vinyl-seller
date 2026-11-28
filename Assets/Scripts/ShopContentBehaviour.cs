@@ -80,6 +80,7 @@ public class ShopContentBehaviour : MonoBehaviour
             item.owned = true;
             price.gameObject.SetActive(false);
         }
+        AutoloadUnity.chosenBgColors[itemPrefab] = item.color;
         AutoloadUnity.gameArea.GetComponent<GameAreaBehaviour>().spawnBgItemCopyAtLocation(itemPrefab, item.color);
     }
 }

@@ -1,10 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class AutoloadUnity
 {
+    public static Dictionary<GameObject, Color> chosenBgColors = new Dictionary<GameObject, Color>();
+
     public static GameObject shelf;
 
-    public static int cash = 10;
+    public static int cash = 100;
 
     public static GameObject customer;
 

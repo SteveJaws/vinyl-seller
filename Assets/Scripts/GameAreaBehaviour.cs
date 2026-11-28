@@ -20,7 +20,8 @@ public class GameAreaBehaviour : MonoBehaviour
     {
         foreach(BgItem item in bgItemList)
         {
-            spawnBgItemCopyAtLocation(item.prefab);
+            Color? savedColor = AutoloadUnity.chosenBgColors.TryGetValue(item.prefab, out Color color) ? color : (Color?)null;
+            spawnBgItemCopyAtLocation(item.prefab, savedColor);
         }
         GameObject spawnedCustomer = Instantiate(customer, transform);
         CustomerBehaviour spawnedCustomerScript = spawnedCustomer.GetComponent<CustomerBehaviour>();
@@ -40,10 +41,9 @@ public class GameAreaBehaviour : MonoBehaviour
         {
             if(item.prefab == prefab)
             {
-                bool result = spawnedBgItemList.ContainsKey(item);
-
-                if (result)
+                if (spawnedBgItemList.TryGetValue(item, out GameObject oldItem))
                 {
+                    Destroy(oldItem);
                     spawnedBgItemList.Remove(item);
                 }
 

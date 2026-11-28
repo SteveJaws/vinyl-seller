@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameMasterBehaviour : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class GameMasterBehaviour : MonoBehaviour
 
     [SerializeField] private GameObject loseValue;
     [SerializeField] private GameObject winBonusValue;
+
+    [SerializeField] private Button shopButton;
  
     void Awake()
     {
@@ -22,7 +26,7 @@ public class GameMasterBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        shopButton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,6 +42,7 @@ public class GameMasterBehaviour : MonoBehaviour
         spawnedGameArea = Instantiate(gameArea);
         spawnedGameArea.transform.position = transform.position;
         StartCoroutine(Timer(day.time));
+        shopButton.gameObject.SetActive(true);
     }
 
     public Day getDay()
@@ -59,6 +64,7 @@ public class GameMasterBehaviour : MonoBehaviour
 
     private void endDay()
     {
+        shopButton.gameObject.SetActive(false);
         if(earnedCash < day.quota)
         {
             lose();
