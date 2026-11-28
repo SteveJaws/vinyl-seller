@@ -10,6 +10,8 @@ public class GameAreaBehaviour : MonoBehaviour
     [SerializeField] private List<BgItem> bgItemList;
     private Dictionary<BgItem, GameObject> spawnedBgItemList = new Dictionary<BgItem, GameObject>();
 
+    [SerializeField] private GameObject clockHand;
+
     void Awake()
     {
         AutoloadUnity.gameArea = gameObject;
@@ -53,5 +55,10 @@ public class GameAreaBehaviour : MonoBehaviour
                 spawnedItem.transform.position = item.location.transform.position;
             }
         }
+    }
+
+    public GameObject getClockHand()
+    {
+        return clockHand;
     }
 }

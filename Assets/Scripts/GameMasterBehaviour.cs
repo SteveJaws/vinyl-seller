@@ -17,6 +17,9 @@ public class GameMasterBehaviour : MonoBehaviour
     [SerializeField] private GameObject winBonusValue;
 
     [SerializeField] private Button shopButton;
+    [SerializeField] private GameObject goalText;
+
+    private GameObject clockHand;
  
     void Awake()
     {
@@ -27,6 +30,7 @@ public class GameMasterBehaviour : MonoBehaviour
     void Start()
     {
         shopButton.gameObject.SetActive(false);
+        goalText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,7 +46,9 @@ public class GameMasterBehaviour : MonoBehaviour
         spawnedGameArea = Instantiate(gameArea);
         spawnedGameArea.transform.position = transform.position;
         StartCoroutine(Timer(day.time));
+        clockHand = spawnedGameArea.GetComponent<GameAreaBehaviour>().getClockHand();
         shopButton.gameObject.SetActive(true);
+        goalText.gameObject.SetActive(true);
     }
 
     public Day getDay()
@@ -65,6 +71,7 @@ public class GameMasterBehaviour : MonoBehaviour
     private void endDay()
     {
         shopButton.gameObject.SetActive(false);
+        goalText.gameObject.SetActive(false);
         if(earnedCash < day.quota)
         {
             lose();
@@ -120,6 +127,11 @@ public class GameMasterBehaviour : MonoBehaviour
         {
             print(time - timePassed);
             yield return new WaitForSeconds(1f);  
+            // float percent = timePassed / time * 360;
+            // // clockHand.transform.rotation = new Vector3(0, 0, percent);
+            // clockHand.transform.Rotate(0, 0, percent);
+            float angle = ((float)timePassed + 1) / time * 360f;
+            clockHand.transform.localRotation = Quaternion.Euler(0, 0, -angle);
             if(timePassed >= time)
             {
                 isNotTime = false;
