@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameAreaBehaviour : MonoBehaviour
@@ -5,6 +7,8 @@ public class GameAreaBehaviour : MonoBehaviour
     [SerializeField] private GameObject customer;
     [SerializeField] private GameObject customerSpawn;
     [SerializeField] private GameObject customerTarget;
+    [SerializeField] private List<BgItem> bgItemList;
+    private Dictionary<BgItem, GameObject> spawnedBgItemList = new Dictionary<BgItem, GameObject>();
 
     void Awake()
     {
@@ -14,6 +18,10 @@ public class GameAreaBehaviour : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        foreach(BgItem item in bgItemList)
+        {
+            spawnBgItemCopyAtLocation(item.prefab);
+        }
         GameObject spawnedCustomer = Instantiate(customer, transform);
         CustomerBehaviour spawnedCustomerScript = spawnedCustomer.GetComponent<CustomerBehaviour>();
         spawnedCustomerScript.setSpawnAndTarget(customerSpawn, customerTarget);
@@ -24,5 +32,26 @@ public class GameAreaBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void spawnBgItemCopyAtLocation(GameObject prefab, Color? color = null)
+    {
+        foreach(BgItem item in bgItemList)
+        {
+            if(item.prefab == prefab)
+            {
+                bool result = spawnedBgItemList.ContainsKey(item);
+
+                if (result)
+                {
+                    spawnedBgItemList.Remove(item);
+                }
+
+                GameObject spawnedItem = Instantiate(prefab, transform);
+                spawnedBgItemList.Add(item, spawnedItem);
+                if(color != null) spawnedItem.GetComponent<SpriteRenderer>().color = (Color)color;
+                spawnedItem.transform.position = item.location.transform.position;
+            }
+        }
     }
 }

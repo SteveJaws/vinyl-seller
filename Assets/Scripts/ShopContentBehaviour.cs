@@ -80,6 +80,6 @@ public class ShopContentBehaviour : MonoBehaviour
             item.owned = true;
             price.gameObject.SetActive(false);
         }
-        itemPrefab.GetComponent<SpriteRenderer>().color = item.color;
+        AutoloadUnity.gameArea.GetComponent<GameAreaBehaviour>().spawnBgItemCopyAtLocation(itemPrefab, item.color);
     }
 }

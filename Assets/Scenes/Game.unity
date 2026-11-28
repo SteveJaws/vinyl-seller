@@ -1933,7 +1933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 2115150592250210401, guid: 46ee29df9c29e344faadbd6ddf3e8cf9, type: 3}
   shopItemList:
   - name: White Bag Dispenser
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -2785,7 +2785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 5710383292809208381, guid: f44b221039c8cc54a9eaf9877d157b52, type: 3}
   shopItemList:
   - name: White pot
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -7291,7 +7291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 2896404926978229363, guid: 3a35a3cf324bb6143a11a0234d3cba5f, type: 3}
   shopItemList:
   - name: White Placemat
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -7605,7 +7605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 5586820486181159287, guid: 81fd04a7e0db57e4a8f608d3cbc1c35e, type: 3}
   shopItemList:
   - name: White poster
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -7865,7 +7865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 8863278250280209951, guid: 9e16daaf3d0eda84cbb9b8981c211b19, type: 3}
   shopItemList:
   - name: White Plant
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -10478,7 +10478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 7837111374339708192, guid: 6e251848734874f4fb92aa4fa0ac7840, type: 3}
   shopItemList:
   - name: White Counter
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -12511,7 +12511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 3496350054455958533, guid: 2c2ce26128ecb914bb5ad2fac35e2af8, type: 3}
   shopItemList:
   - name: White Vinyl Box
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -17061,7 +17061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 3515675304945494039, guid: 777b491fbebc24d4d94e44ece4a0113d, type: 3}
   shopItemList:
   - name: White poster
     color: {r: 1, g: 1, b: 1, a: 1}
@@ -18310,7 +18310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c22da4e6c3f167b8fc5d9a1be7dc6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopContentBehaviour
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 1015289347761699351, guid: 9836a28d91dcfc54ba720602a04f2650, type: 3}
   shopItemList:
   - name: White Table
     color: {r: 1, g: 1, b: 1, a: 1}
