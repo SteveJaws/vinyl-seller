@@ -104,7 +104,6 @@ public class GameMasterBehaviour : MonoBehaviour
 
     private void lose()
     {
-        print("you lose");
         AutoloadUnity.cash += day.loseAmount;
         if(AutoloadUnity.cash < 0) AutoloadUnity.cash = 0;
         TMPro.TextMeshProUGUI text = loseValue.GetComponent<TMPro.TextMeshProUGUI>();
@@ -113,7 +112,6 @@ public class GameMasterBehaviour : MonoBehaviour
 
     private void win()
     {
-        print("you win");
         AutoloadUnity.cash += day.winBonus;
         TMPro.TextMeshProUGUI text = winBonusValue.GetComponent<TMPro.TextMeshProUGUI>();
         text.text = day.winBonus.ToString();
@@ -127,9 +125,6 @@ public class GameMasterBehaviour : MonoBehaviour
         {
             print(time - timePassed);
             yield return new WaitForSeconds(1f);  
-            // float percent = timePassed / time * 360;
-            // // clockHand.transform.rotation = new Vector3(0, 0, percent);
-            // clockHand.transform.Rotate(0, 0, percent);
             float angle = ((float)timePassed + 1) / time * 360f;
             clockHand.transform.localRotation = Quaternion.Euler(0, 0, -angle);
             if(timePassed >= time)

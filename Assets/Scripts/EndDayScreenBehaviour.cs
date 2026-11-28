@@ -37,12 +37,10 @@ public class EndDayScreenBehaviour : MonoBehaviour
         gameObject.SetActive(true);
         if (earnedCash < quota)
         {
-            print("loseScreen");
             loseScreen.gameObject.SetActive(true);
         }
         else
         {
-            print("winScreen");
             winScreen.gameObject.SetActive(true);
         }
     }
