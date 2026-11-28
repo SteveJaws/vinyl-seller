@@ -11,6 +11,9 @@ public class GameMasterBehaviour : MonoBehaviour
 
     private int earnedCash = 0;
 
+    [SerializeField] private GameObject loseValue;
+    [SerializeField] private GameObject winBonusValue;
+ 
     void Awake()
     {
         AutoloadUnity.gameMaster = gameObject;
@@ -91,12 +94,16 @@ public class GameMasterBehaviour : MonoBehaviour
         print("you lose");
         AutoloadUnity.cash += day.loseAmount;
         if(AutoloadUnity.cash < 0) AutoloadUnity.cash = 0;
+        TMPro.TextMeshProUGUI text = loseValue.GetComponent<TMPro.TextMeshProUGUI>();
+        text.text = day.loseAmount.ToString();
     }
 
     private void win()
     {
         print("you win");
         AutoloadUnity.cash += day.winBonus;
+        TMPro.TextMeshProUGUI text = winBonusValue.GetComponent<TMPro.TextMeshProUGUI>();
+        text.text = day.winBonus.ToString();
     }
 
     IEnumerator Timer(int time)

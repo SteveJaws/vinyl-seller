@@ -4759,7 +4759,6 @@ GameObject:
   - component: {fileID: 792554968}
   - component: {fileID: 792554970}
   - component: {fileID: 792554969}
-  - component: {fileID: 792554971}
   m_Layer: 5
   m_Name: AmountLostValue
   m_TagString: Untagged
@@ -4886,18 +4885,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792554967}
   m_CullTransparentMesh: 1
---- !u!114 &792554971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792554967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93726e62d1848244085d02e4b86f9acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GetWinOrLoseBonusValue
 --- !u!1 &805634278
 GameObject:
   m_ObjectHideFlags: 0
@@ -5553,6 +5540,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMasterBehaviour
   gameArea: {fileID: 6447658100412115139, guid: 63816f667275c5944a8eafcb54a4800e, type: 3}
+  resultScreen: {fileID: 1512209708}
+  loseValue: {fileID: 792554967}
+  winBonusValue: {fileID: 2010980681}
 --- !u!1 &1002561497
 GameObject:
   m_ObjectHideFlags: 0
@@ -12842,7 +12832,6 @@ GameObject:
   - component: {fileID: 2010980682}
   - component: {fileID: 2010980684}
   - component: {fileID: 2010980683}
-  - component: {fileID: 2010980685}
   m_Layer: 5
   m_Name: WinBonusValue
   m_TagString: Untagged
@@ -12969,18 +12958,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010980681}
   m_CullTransparentMesh: 1
---- !u!114 &2010980685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010980681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93726e62d1848244085d02e4b86f9acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GetWinOrLoseBonusValue
 --- !u!1 &2014823327
 GameObject:
   m_ObjectHideFlags: 0
